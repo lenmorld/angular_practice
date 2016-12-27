@@ -1,0 +1,59 @@
+<!-- ng-repeat -->
+
+
+<!-- make the notesApp module main entry point for app-->
+<html ng-app="notesApp">
+
+<head>
+	<title>Notes app</title>
+</head>
+
+<!-- instantiate an instance of controller and attach it to DOM -->
+<!-- put code in controller instead of inside HTML-->
+<body ng-controller="MainCtrl as ctrl">
+
+	<table>
+		BAD!! repeats but seperates label and done in different rows
+
+		<tr ng-repeat="note in ctrl.notes">
+			<td> {{ note.label }}</td>
+		</tr>
+		<tr ng-repeat="note in ctrl.notes">
+			<td>Done: {{ note.done }}</td>
+		</tr>
+
+		<tr>	
+			<td>GOOD<br>
+			AngularJS will then ensure that it creates both tr elements for each element in the array
+			we are repeating.
+			</td>
+		</tr>
+
+		<tr ng-repeat-start="note in ctrl.notes">
+			<td> {{ note.label }}</td>
+		</tr>
+		<tr ng-repeat-end>
+			<td>Done: {{ note.done }}</td>
+		</tr>
+
+	</table>
+
+	<!-- <script src="angular.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"> </script>
+
+	<script type="text/javascript">
+	// define module, no dependencies
+		angular.module('notesApp', [])
+				.controller('MainCtrl', [function() {
+					var self = this;		// use proxy variable this for clarity
+
+					//ARRAY of objects
+					self.notes = [
+							{id: 1, label: 'First Note', done: false},
+							{id: 2, label: 'Second Note', done: false},
+							{id: 3, label: 'Third Note', done: true}
+						];
+				}]);
+	</script>
+</body>
+</html>

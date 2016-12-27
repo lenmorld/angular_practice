@@ -1,0 +1,34 @@
+<!-- ng-click -->
+
+<!-- make the notesApp module main entry point for app-->
+<html ng-app="notesApp">
+
+<head>
+	<title>Notes app</title>
+</head>
+
+<!-- instantiate an instance of controller and attach it to DOM -->
+<!-- put code in controller instead of inside HTML-->
+<body ng-controller="MainCtrl as ctrl">
+	<h1>{{ctrl.message}} AngularJS. </h1>
+
+	<button ng-click="ctrl.changeMessage()">
+		Change Message
+	</button>
+
+
+<script src="angular.min.js"></script>
+
+<script type="text/javascript">
+// define module, no dependencies
+	angular.module('notesApp', [])
+			.controller('MainCtrl', [function() {
+				var self = this;		// use proxy variable this for clarity
+				self.message = "Hello";
+				self.changeMessage = function() {
+					self.message = "Goodbye";
+				}
+			}]);
+</script>
+</body>
+</html>
