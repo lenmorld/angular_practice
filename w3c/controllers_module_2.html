@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="personCtrl">
+
+First Name: <input type="text" ng-model="firstName" /><br/>
+Last Name:  <input type="text" ng-model="lastName" /><br/>
+
+<!-- call function -->
+Full Name: {{ fullName() }}
+
+</div>
+
+
+<script src="personCtrl.js"></script>
+
+</body>
+
+<!-- Mirrored from www.w3schools.com/angular/tryit.asp?filename=try_ng_controller_property by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Jul 2016 02:33:21 GMT -->
+</html>

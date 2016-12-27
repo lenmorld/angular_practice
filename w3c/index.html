@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.min.js"></script>
+<body>
+
+<!-- initialize name control-->
+<div ng-app="" ng-init="name='Lenny'">
+ 
+<p>Input something in the input box:</p>
+<p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
+<h1>Hello {{name}}</h1>
+
+<p>Number : <input type="text" ng-model="num" placeholder="Enter number here"></p>
+<h1 ng-bind="num"></h1>
+
+</div>
+
+</body>
+
+<!-- Mirrored from www.w3schools.com/angular/tryit.asp?filename=try_ng_default by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Jul 2016 02:33:17 GMT -->
+</html>
+

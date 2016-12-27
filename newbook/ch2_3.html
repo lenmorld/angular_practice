@@ -1,0 +1,29 @@
+
+<!-- make the notesApp module main entry point for app-->
+<html ng-app="notesApp">
+
+<head>
+	<title>Notes app</title>
+</head>
+
+<!-- instantiate an instance of controller and attach it to DOM -->
+<!-- put code in controller instead of inside HTML-->
+<body ng-controller="MainCtrl as ctrl">
+	{{ctrl.helloMsg}} AngularJS.
+	<br/>
+	{{ctrl.goodbyeMsg}} AngularJS.
+
+
+<script src="angular.min.js"></script>
+
+<script type="text/javascript">
+// define module, no dependencies
+	angular.module('notesApp', [])
+			.controller('MainCtrl', [function() {
+				this.helloMsg = "Hello";
+				// var message = "LOCAL VAR NOT VISIBLE TO HTML";
+				this.goodbyeMsg = "Goodbye";
+			}]);
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="angular.min.js"></script>
+
+<style>
+input.ng-invalid {
+    background-color: lightblue;
+}
+</style>
+
+</head>
+<!-- putting ng-app here causes the app to be the whole html page -->
+<body ng-app="" ng-init="list=['ng-empty','ng-not-empty','ng-touched','ng-untouched','ng-valid','ng-invalid','ng-dirty','ng-pending','ng-pristine']">
+
+
+
+
+<form name="myForm">
+
+
+	E-mail: <input type="email" name="emailAddress" ng-model="text1" />
+	<span ng-show="myForm.emailAddress.$error.email">Not a valid email</span>
+	
+	<p> Your valid email: {{ text1 }} </p>
+	
+	
+	<h1>Status</h1>
+<p>Valid: {{myForm.emailAddress.$valid}} (if true, the value meets all criteria).</p>
+<p>Dirty: {{myForm.emailAddress.$dirty}} (if true, the value has been changed).</p>
+<p>Touched: {{myForm.emailAddress.$touched}} (if true, the field has been in focus).</p>
+	
+
+</form>
+
+
+
+<div>
+	<ul>
+		<li ng-repeat="x in list"> {{ x }}</li>
+	</ul>
+</div>
+
+
+</body>
+
+
+</html>
+

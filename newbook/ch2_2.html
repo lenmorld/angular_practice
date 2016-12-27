@@ -1,0 +1,27 @@
+
+<!-- make the notesApp module main entry point for app-->
+<html ng-app="notesApp">
+
+<head>
+	<title>Helloe ANG</title>
+</head>
+
+<!-- instantiate an instance of controller and attach it to DOM -->
+<body ng-controller="MainCtrl">
+
+Hello {{1 + 1}}nd time Angular JS
+
+
+<script src="angular.min.js"></script>
+
+<script type="text/javascript">
+// define module, no dependencies
+	angular.module('notesApp', [])
+			// define controller, put all dependencies in array, with actual controller function on last
+			.controller('MainCtrl', [function() {
+				// put controller code here
+				console.log('MainCtrl loaded');
+			}]);
+</script>
+</body>
+</html>

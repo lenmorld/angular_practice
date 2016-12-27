@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	<!--  model-view without controller -->
+	FirstName: <div ng-model="firstname"> {{firstname}}</div>
+	<br />
+	
+	<!-- controller can change the view immediately  -->
+    <input type="button" ng-click="changeName()" value="CHANGE IT!"/>
+	LastName: <div>{{lastname}}</div>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    //init firstname, direct model-view
+	$scope.firstname = "John";
+	
+	//define changeName() here
+    $scope.changeName = function() {
+        $scope.lastname = "Nelly";
+    }
+});
+</script>
+
+<p>Click on the header to run the "changeName" function.</p>
+
+<p>This example demonstrates how to use the controller to change model data.</p>
+
+</body>
+
+<!-- Mirrored from www.w3schools.com/angular/tryit.asp?filename=try_ng_databinding_controller by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Jul 2016 02:33:21 GMT -->
+</html>
+

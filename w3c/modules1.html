@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="angular.min.js"></script>
+</head>
+<body>
+
+<!-- initialize name control-->
+<div ng-app="myApp" ng-init="name='Lenny'" ng-controller="myCtrl" >
+ 
+
+<p>First Name : <input type="text" ng-model="fname" placeholder="Enter name here"></p>
+
+<p>Last Name : <input type="text" ng-model="lname" placeholder="Enter name here"></p>
+
+<p>Full name: {{fname + " " + lname  }} </p>
+
+</div>
+
+<script src="modules1/myApp.js" ></script>
+<script src="modules1/myCtrl.js" ></script>
+
+
+
+</script>
+
+</body>
+
+<!-- Mirrored from www.w3schools.com/angular/tryit.asp?filename=try_ng_default by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Jul 2016 02:33:17 GMT -->
+</html>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.min.js"></script>
+<body>
+
+<!-- note that this will not work with ng-app="myApp" if
+myApp does not exist
+  -->
+  
+ <!-- multiple init, separate by ; -->
+<div ng-app="" ng-init="textcolor='lightblue'; person={firstName:'John',lastName:'Doe'}; points=[1,2,3]">
+ 	<p>My first expression: {{ 5 + 5 }}</p>
+	
+	<p>My first expression: {{ 5 + 5 }}</p>
+
+	<p>The name is {{ person.lastName }}</p>
+	
+	<!-- note that 'text-color' did not work, probably - not allowed as model names  -->
+	
+	<input type="text" ng-model="textcolor" style="background-color: {{textcolor}}"/>
+	
+	<p style="color:{{textcolor}}">hahaha {{points[2]}}</p>
+	
+</div>
+
+
+<!-- NOTE that there can only be one ng-app="" -->
+
+
+
+
+
+
+
+</body>
+</html>

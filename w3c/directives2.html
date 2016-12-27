@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+
+<lenny-directive></lenny-directive>
+
+<div lenny-directive-restrict></div>
+
+<script>
+
+var app= angular.module("myApp", []);
+app.directive ("lennyDirective", function () {
+	return {
+		template : "<h1>Lenny's directive is here!!</h1>"
+	};
+} );
+
+
+app.directive ("lennyDirectiveRestrict", function () {
+	return {
+		restrict: "A",
+		template : "<p>Restricted to attributes 'lenny-directive-restrict'	</p>"
+	};
+} );
+
+</script>
+
+
+
+
+</body>
+
+
+</html>
+
