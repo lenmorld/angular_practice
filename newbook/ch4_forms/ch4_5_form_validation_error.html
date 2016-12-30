@@ -1,0 +1,93 @@
+<html ng-app="MainApp">
+
+<head>
+	<title>Notes App</title>
+	<style type="text/css">
+		.username.ng-valid {
+			background-color: lightgreen;
+		}
+
+		.username.ng-dirty.ng-invalid-required {
+			background-color: magenta;
+		}
+
+		.username.ng-dirty.ng-invalid-minlength {
+			background-color: lightpink;
+		}
+
+
+
+		/* this one will prevail coz its more general*/
+
+		.password.ng-invalid {
+			background-color: red;
+		}
+
+		.password.ng-valid {
+			background-color: lightgreen;
+		}
+
+
+		.myform.ng-pristine {
+			background-color: blue;
+		}
+		.myform.ng-dirty {
+			background-color: lightblue;
+		}
+	</style>
+
+</head>
+
+<body ng-controller="MainCtrl as ctrl">
+
+
+<form ng-submit="ctrl.submit()" name="myForm" class="myform">
+
+	Username <input type="text"
+					class="username"
+					name="uname" 
+					ng-model="ctrl.user.username"
+					required
+					ng-minlength="4"/>
+
+<!-- 	<span ng-show="myForm.uname.$error.required">This is a required field</span>
+	<span ng-show="myForm.uname.$error.minlength">Min required is 4</span>
+	<span ng-show="myForm.uname.$invalid">This field is invalid</span> -->
+
+	Password <input type="password"
+					class="password" 
+					name="pwd"
+					ng-model="ctrl.user.password"
+					required/>
+
+<!-- 	<span ng-show="myForm.pwd.$error.required">This is a required field</span>
+ -->
+	<input type="submit" 
+			value="SUBMIT" 
+			ng-disabled="myForm.$invalid"/>		<!-- DISABLE submit if user has not filled out all the required fields -->
+
+</form>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+
+<script type="text/javascript">
+	angular.module("MainApp", [])
+		.controller("MainCtrl", [function() {
+			var self = this;
+
+			self.submit = function() {
+				console.log("form2 user changed");
+				// console.log("Access model with keys ", self.user.username, self.user.password);
+				console.log("Entire model: ", self.user);
+			};
+		}]);
+
+</script>
+
+
+</body>
+
+</html>

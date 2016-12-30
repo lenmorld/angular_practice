@@ -1,0 +1,73 @@
+<html ng-app="MainApp">
+
+<head><title>Notes App</title></head>
+
+<body ng-controller="MainCtrl as ctrl">
+
+
+VIEW 1 - bound to username and password directly on controller
+<form ng-submit="ctrl.submit()">
+
+	Username <input type="text" ng-model="ctrl.username"/>
+	Password <input type="password" ng-model="ctrl.password"/>
+
+	<input type="submit" value="SUBMIT" />
+
+</form>
+
+
+VIEW 2 - bound to username and password keys (makes more sense)
+<form ng-submit="ctrl.submit2()">
+
+	Username <input type="text" ng-model="ctrl.user.username"/>
+	Password <input type="password" ng-model="ctrl.user.password"/>
+
+	<input type="submit" value="SUBMIT" />
+
+</form>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+
+<script type="text/javascript">
+	angular.module("MainApp", [])
+		.controller("MainCtrl", [function() {
+			var self = this;
+			// self.username = "johndoe";		// init username and pass
+			// self.password = "1234";
+
+			// self.change = function() {
+			// 	self.username = "newuser";
+			// 	self.password = "456789";
+			// };
+
+			/* NO NEED TO DECLARE self.user = {}
+		
+				ng-model: allows AngularJS to auto create the objects and keys necessary to instantiate 
+				data-binding
+
+				until the user types something, there is no user object
+			*/
+
+			self.submit = function() {
+
+				// instantiate user with the data from form1
+				var user = {username: self.username, password: self.password};
+				console.log("user changed: ", user);
+			};
+
+
+			self.submit2 = function() {
+				console.log("form2 user changed");
+				console.log("Access model with keys ", self.user.username, self.user.password);
+				console.log("Entire model: ", self.user);
+			};
+		}]);
+
+</script>
+
+
+</body>
+
+</html>

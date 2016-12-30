@@ -1,0 +1,101 @@
+<html ng-app>
+
+<head>
+	<title>Notes App</title>
+</head>
+
+<body>
+
+
+<form novalidate name="myForm">
+
+	Username <input type="text" 
+					class="username"
+					name="uname"
+					ng-model="ctrl.user.username"
+					required
+					ng-minlength="4"/>
+
+	Password <input type="password"
+					class="password"
+					name="pwd" 
+					ng-model="ctrl.user.password"
+					placeholder="password"
+					required/>
+
+	<ng-form name="profile">
+		<br/>
+		<input type="text"
+				name="firstName"
+				placeholder="First Name"
+				ng-model="ctrl.user.profile.firstName"
+				required>
+
+		<br/>
+		<input type="text"
+				name="middleName"
+				placeholder="Middle Name"
+				ng-model="ctrl.user.profile.middleName"
+				required>
+
+		<br/>
+		<input type="text"
+				name="lastName"
+				placeholder="Last Name"
+				ng-model="ctrl.user.profile.lastName"
+				required>
+
+		<br/>
+		<input type="date"
+				name="dob"
+				placeholder="Date of Birth"
+				ng-model="ctrl.user.profile.dob">
+	</ng-form>
+
+
+	<ng-form name="interests">
+		ADDRESS<textarea ng-model="ctrl.user.interests.address" required></textarea>
+
+		AGREE (2-way bind)<input type="checkbox"
+				ng-model="ctrl.user.interests.agree"
+				ng-true-value="YES"
+				ng-false-value="NO" />
+
+
+	</ng-form>
+
+
+	<!-- only show if sub-form profile is invalid
+			that is, if a required input is not filled -->
+	<span ng-show="myForm.profile.$invalid">
+		Please fill out the profile information
+	</span>
+
+	<input type="submit" 
+			value="SUBMIT" 
+			ng-disabled="myForm.$invalid"/>		<!-- DISABLE submit if user has not filled out all the required fields -->
+</form>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+
+<!-- <script type="text/javascript">
+	angular.module("MainApp", [])
+		.controller("MainCtrl", [function() {
+			var self = this;
+
+			self.submit = function() {
+				console.log("form2 user changed");
+				// console.log("Access model with keys ", self.user.username, self.user.password);
+				console.log("Entire model: ", self.user);
+			};
+		}]);
+
+</script> -->
+
+
+</body>
+
+</html>
