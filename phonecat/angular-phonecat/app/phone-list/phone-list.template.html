@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <!-- ngModel allows search criteria to be applied immediately to the list-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <!-- sidebar content -->
+                Search: <input ng-model="$ctrl.query">
+            </div>
+        </div>
+
+        Search query:
+        <div ng-bind="$ctrl.query"></div>
+
+        <p> Sort by:
+            <select ng-model="$ctrl.orderProp">
+                <option value="name">Alphabetical</option>
+                <option value="age">Newest</option>
+                <option value="-age">Oldest</option> <!-- revers sort for age -->
+            </select>
+        </p>
+
+        Current ordering
+        <div>{{$ctrl.orderProp}}</div>
+
+        Limit by
+        <div>
+            <input type="text" ng-model="$ctrl.limit" />
+            <button ng-click="$ctrl.changeLimit()">LIMIT</button>
+        </div>
+
+        <div class="col-md-10">
+            <!-- body content -->
+            <ul class="phones">
+                <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="thumbnail">
+                    <a href="#!/phones/{{phone.id}}" class="thumb">
+                        <img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}" />
+                    </a>
+                    <a href="#!/phones/{{phone.id}}">{{phone.name}}</a>
+                    <p>{{phone.snippet}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- -->
+
+    <!--<ul>  -->
+        <!--<li ng-repeat="phone in $ctrl.phones">    -->
+             <!--<span>{{ phone.name }}</span>   -->
+             <!--<p>{{ phone.snippet}}</p>   -->
+             <!--</li>   -->
+    <!--</ul>   -->
+     <br/>   
+     <p><strong>Total number of phones: {{ $ctrl.phones.length }}</strong></p>
+
+     <!--<h4>Multiplication table</h4>-->
+     <!--<table border="1">-->
+             <!--<tr ng-repeat="i in [1,2,3,4,5,6,7,8]">-->
+                     <!--<td ng-repeat="j in [1,2,3,4,5,6,7,8]"> {{ i*j }} </td>-->
+                 <!--</tr>-->
+     <!--</table>-->
+
+    <pre>{{$ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp | json }}</pre>
+
+</body>
+</html>
